@@ -3,154 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>17岁增肌长高打卡系统</title>
+    <title>寒假自律增肌长高打卡系统</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
         }
         
         body {
-            font-family: 'Microsoft YaHei', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            color: #333;
         }
         
         .container {
             max-width: 800px;
             margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            padding: 20px;
-        }
-        
-        .card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
         
-        h1 {
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
             font-size: 28px;
             margin-bottom: 10px;
         }
         
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
         }
         
-        h3 {
-            color: #555;
-            margin: 15px 0 10px 0;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .tab-container {
+            display: flex;
+            background: #f1f3f4;
+            padding: 0 20px;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid #667eea;
+            color: #667eea;
+            background: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
         
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: 500;
             color: #555;
-            font-weight: bold;
         }
         
-        input, select, textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #ddd;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 16px;
             transition: border-color 0.3s;
         }
         
-        input:focus, select:focus, textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: #667eea;
             outline: none;
         }
         
-        textarea {
-            height: 100px;
-            resize: vertical;
+        .meal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .meal-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 14px 30px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
             transition: transform 0.2s;
-            font-weight: bold;
-            margin-top: 10px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
         }
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .btn-secondary {
-            background: #6c757d;
-            margin-left: 10px;
+        .records {
+            margin-top: 30px;
         }
         
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .counter {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .counter-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #667eea;
-            color: white;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        
-        .counter-display {
-            font-size: 24px;
-            font-weight: bold;
-            min-width: 50px;
-            text-align: center;
-            line-height: 40px;
-        }
-        
-        .record-item {
+        .record-card {
             background: #f8f9fa;
-            border-left: 4px solid #667eea;
-            padding: 15px;
+            padding: 20px;
             margin-bottom: 15px;
-            border-radius: 0 8px 8px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
         }
         
         .record-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
         }
         
         .record-date {
@@ -158,717 +198,759 @@
             color: #667eea;
         }
         
+        .record-time {
+            color: #666;
+        }
+        
         .record-content {
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin-top: 20px;
         }
         
-        .stat-box {
-            background: #f0f2ff;
-            padding: 20px;
-            border-radius: 10px;
+        .record-section h4 {
+            color: #555;
+            margin-bottom: 5px;
+        }
+        
+        .password-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
             text-align: center;
         }
         
-        .stat-value {
-            font-size: 32px;
-            font-weight: bold;
-            color: #667eea;
+        .password-input {
+            margin: 20px 0;
+            padding: 12px;
+            width: 100%;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 2px;
         }
         
-        .stat-label {
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .nutrition-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .meal-box {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        
-        @media (max-width: 600px) {
-            .nutrition-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-            }
-        }
-        
-        .section-tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .tab {
-            padding: 10px 20px;
+        .password-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
+            font-size: 16px;
         }
         
-        .tab.active {
-            border-bottom: 3px solid #667eea;
-            color: #667eea;
-            font-weight: bold;
-        }
-        
-        .section-content {
+        .alert {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
             display: none;
         }
         
-        .section-content.active {
-            display: block;
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .tab-container {
+                flex-wrap: wrap;
+                padding: 0;
+            }
+            
+            .tab {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+                padding: 12px 15px;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .meal-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🏋️ 青少年增肌长高打卡系统</h1>
-            <p>17岁专属 | 寒假自律计划 | 每日跟踪</p>
-        </header>
+        <div class="header">
+            <h1>🏋️‍♂️ 寒假自律增肌长高打卡系统</h1>
+            <p>17岁专项训练计划 · 四天训练法 · 科学增肌长高</p>
+        </div>
         
-        <!-- 选项卡导航 -->
-        <div class="card">
-            <div class="section-tabs">
-                <div class="tab active" onclick="showSection('today')">📝 今日打卡</div>
-                <div class="tab" onclick="showSection('records')">📊 打卡记录</div>
-                <div class="tab" onclick="showSection('plan')">📋 训练计划</div>
-                <div class="tab" onclick="showSection('stats')">📈 数据统计</div>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number" id="totalDays">0</div>
+                <div>累计打卡天数</div>
             </div>
-            
-            <!-- 今日打卡 -->
-            <div id="today-section" class="section-content active">
-                <h2>📅 今日打卡 - <span id="today-date"></span></h2>
-                
-                <form id="tracking-form">
-                    <!-- 运动情况 -->
-                    <div class="form-group">
-                        <h3>🏃 今日运动情况</h3>
-                        
-                        <div class="form-group">
-                            <label>引体向上（个）</label>
-                            <div class="counter">
-                                <button type="button" class="counter-btn" onclick="changeValue('pullups', -1)">-</button>
-                                <span id="pullups-count" class="counter-display">0</span>
-                                <button type="button" class="counter-btn" onclick="changeValue('pullups', 1)">+</button>
-                            </div>
-                            <input type="hidden" id="pullups" name="pullups" value="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>俯卧撑（个）</label>
-                            <div class="counter">
-                                <button type="button" class="counter-btn" onclick="changeValue('pushups', -1)">-</button>
-                                <span id="pushups-count" class="counter-display">0</span>
-                                <button type="button" class="counter-btn" onclick="changeValue('pushups', 1)">+</button>
-                            </div>
-                            <input type="hidden" id="pushups" name="pushups" value="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>深蹲（个）</label>
-                            <div class="counter">
-                                <button type="button" class="counter-btn" onclick="changeValue('squats', -1)">-</button>
-                                <span id="squats-count" class="counter-display">0</span>
-                                <button type="button" class="counter-btn" onclick="changeValue('squats', 1)">+</button>
-                            </div>
-                            <input type="hidden" id="squats" name="squats" value="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>摸高训练（次）</label>
-                            <input type="number" id="jumps" name="jumps" value="0" min="0">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>运动时长（分钟）</label>
-                            <input type="number" id="exerciseTime" name="exerciseTime" value="0" min="0" step="5">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>运动感受 / 备注</label>
-                            <textarea id="exerciseNotes" name="exerciseNotes" placeholder="记录今天的运动感受..."></textarea>
-                        </div>
-                    </div>
-                    
-                    <!-- 饮食记录 -->
-                    <div class="form-group">
-                        <h3>🍽️ 今日饮食记录</h3>
-                        
-                        <div class="nutrition-section">
-                            <div class="meal-box">
-                                <h4>早餐</h4>
-                                <textarea id="breakfast" name="breakfast" placeholder="例：牛奶250ml + 鸡蛋2个 + 全麦面包2片 + 苹果1个"></textarea>
-                            </div>
-                            
-                            <div class="meal-box">
-                                <h4>午餐</h4>
-                                <textarea id="lunch" name="lunch" placeholder="例：米饭200g + 鸡胸肉150g + 蔬菜250g + 豆腐100g"></textarea>
-                            </div>
-                            
-                            <div class="meal-box">
-                                <h4>晚餐</h4>
-                                <textarea id="dinner" name="dinner" placeholder="例：糙米饭150g + 鱼肉120g + 西兰花200g"></textarea>
-                            </div>
-                            
-                            <div class="meal-box">
-                                <h4>加餐/营养补充</h4>
-                                <textarea id="snacks" name="snacks" placeholder="例：蛋白粉1勺 + 坚果30g + 香蕉1根"></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>饮水量（ml）</label>
-                            <input type="number" id="water" name="water" value="0" min="0">
-                        </div>
-                    </div>
-                    
-                    <!-- 睡眠记录 -->
-                    <div class="form-group">
-                        <h3>😴 睡眠记录</h3>
-                        
-                        <div class="form-group">
-                            <label>上床时间</label>
-                            <input type="time" id="sleepTime" name="sleepTime" value="22:30">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>起床时间</label>
-                            <input type="time" id="wakeTime" name="wakeTime" value="07:00">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>睡眠质量</label>
-                            <select id="sleepQuality" name="sleepQuality">
-                                <option value="5">⭐️⭐️⭐️⭐️⭐️ 非常好</option>
-                                <option value="4">⭐️⭐️⭐️⭐️ 良好</option>
-                                <option value="3">⭐️⭐️⭐️ 一般</option>
-                                <option value="2">⭐️⭐️ 较差</option>
-                                <option value="1">⭐️ 很差</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <!-- 身高体重记录 -->
-                    <div class="form-group">
-                        <h3>📏 身体数据（每周记录）</h3>
-                        
-                        <div class="form-group">
-                            <label>当前身高（cm）</label>
-                            <input type="number" id="height" name="height" step="0.1" placeholder="175.5">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>当前体重（kg）</label>
-                            <input type="number" id="weight" name="weight" step="0.1" placeholder="65.2">
-                        </div>
-                    </div>
-                    
-                    <div class="btn-group">
-                        <button type="button" class="btn" onclick="saveRecord()">💾 保存今日记录</button>
-                        <button type="button" class="btn btn-secondary" onclick="clearForm()">🔄 重置表单</button>
-                    </div>
-                </form>
+            <div class="stat-card">
+                <div class="number" id="totalWorkouts">0</div>
+                <div>训练次数</div>
             </div>
-            
-            <!-- 打卡记录 -->
-            <div id="records-section" class="section-content">
-                <h2>📊 历史打卡记录</h2>
-                <div class="btn-group">
-                    <button class="btn" onclick="exportData()">📥 导出数据</button>
-                    <button class="btn btn-secondary" onclick="importData()">📤 导入数据</button>
-                    <input type="file" id="import-file" style="display:none" accept=".json">
-                </div>
-                <div id="records-list"></div>
+            <div class="stat-card">
+                <div class="number" id="avgSleep">0h</div>
+                <div>平均睡眠时间</div>
             </div>
-            
-            <!-- 训练计划 -->
-            <div id="plan-section" class="section-content">
-                <h2>📋 17岁增肌长高训练计划</h2>
-                
-                <div class="form-group">
-                    <h3>🏀 每日基础训练（早上）</h3>
-                    <ul style="padding-left: 20px; margin-bottom: 15px;">
-                        <li>热身：动态拉伸 10分钟</li>
-                        <li>摸高训练：3组×15次</li>
-                        <li>跳绳：5分钟×2组</li>
-                        <li>悬挂单杠：3组×30秒</li>
-                    </ul>
-                    
-                    <h3>💪 力量训练（下午/晚上）</h3>
-                    <ul style="padding-left: 20px; margin-bottom: 15px;">
-                        <li>周一/四：上肢日 - 引体向上、俯卧撑、哑铃推举</li>
-                        <li>周二/五：下肢日 - 深蹲、箭步蹲、提踵</li>
-                        <li>周三/六：核心日 - 平板支撑、卷腹、俄罗斯转体</li>
-                        <li>周日：休息日</li>
-                    </ul>
-                    
-                    <h3>🍎 营养目标</h3>
-                    <ul style="padding-left: 20px; margin-bottom: 15px;">
-                        <li>每日蛋白质：1.5-2g/kg体重</li>
-                        <li>钙摄入：1000-1200mg/天（牛奶、豆腐、绿叶蔬菜）</li>
-                        <li>维生素D：多晒太阳或补充剂</li>
-                        <li>饮水：2000-3000ml/天</li>
-                    </ul>
-                    
-                    <h3>😴 睡眠要求</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>目标睡眠：8-9小时/天</li>
-                        <li>最佳入睡时间：22:00-23:00</li>
-                        <li>生长激素分泌高峰期：23:00-02:00</li>
-                    </ul>
-                </div>
+            <div class="stat-card">
+                <div class="number" id="currentWeek">1</div>
+                <div>当前周次</div>
             </div>
-            
-            <!-- 数据统计 -->
-            <div id="stats-section" class="section-content">
-                <h2>📈 训练数据统计</h2>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-value" id="total-days">0</div>
-                        <div class="stat-label">打卡天数</div>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab active" onclick="switchTab('diet')">🍽️ 饮食记录</div>
+            <div class="tab" onclick="switchTab('workout')">💪 运动训练</div>
+            <div class="tab" onclick="switchTab('sleep')">😴 睡眠管理</div>
+            <div class="tab" onclick="switchTab('records')">📊 打卡记录</div>
+        </div>
+        
+        <!-- 饮食记录标签 -->
+        <div class="tab-content active" id="diet-tab">
+            <h2>今日饮食记录</h2>
+            <div class="meal-grid">
+                <div class="meal-box">
+                    <h3>早餐 (7:00-8:00)</h3>
+                    <div class="form-group">
+                        <label>主要食物：</label>
+                        <input type="text" id="breakfast-main" placeholder="如：燕麦、鸡蛋、牛奶">
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="total-pullups">0</div>
-                        <div class="stat-label">引体向上总数</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="total-pushups">0</div>
-                        <div class="stat-label">俯卧撑总数</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="total-squats">0</div>
-                        <div class="stat-label">深蹲总数</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="avg-sleep">0</div>
-                        <div class="stat-label">平均睡眠(小时)</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="avg-water">0</div>
-                        <div class="stat-label">平均饮水量(ml)</div>
+                    <div class="form-group">
+                        <label>蛋白质摄入(g)：</label>
+                        <input type="number" id="breakfast-protein" min="0" max="100">
                     </div>
                 </div>
                 
-                <h3 style="margin-top: 30px;">📅 最近7天训练趋势</h3>
-                <div id="chart-container" style="margin-top: 20px; height: 300px;">
-                    <canvas id="trend-chart"></canvas>
+                <div class="meal-box">
+                    <h3>午餐 (12:00-13:00)</h3>
+                    <div class="form-group">
+                        <label>主要食物：</label>
+                        <input type="text" id="lunch-main" placeholder="如：米饭、鸡胸肉、蔬菜">
+                    </div>
+                    <div class="form-group">
+                        <label>蛋白质摄入(g)：</label>
+                        <input type="number" id="lunch-protein" min="0" max="100">
+                    </div>
                 </div>
+                
+                <div class="meal-box">
+                    <h3>晚餐 (18:00-19:00)</h3>
+                    <div class="form-group">
+                        <label>主要食物：</label>
+                        <input type="text" id="dinner-main" placeholder="如：牛肉、糙米、西兰花">
+                    </div>
+                    <div class="form-group">
+                        <label>蛋白质摄入(g)：</label>
+                        <input type="number" id="dinner-protein" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>加餐/补剂：</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="snack-protein"> 蛋白粉
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="snack-fruit"> 水果
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="snack-nuts"> 坚果
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="snack-milk"> 牛奶
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="snack-other"> 其他
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>今日总饮水量(L)：</label>
+                <input type="number" id="water-intake" min="0" max="10" step="0.5" value="2">
+            </div>
+            
+            <button class="btn" onclick="requestPassword()">提交今日饮食记录</button>
+        </div>
+        
+        <!-- 运动训练标签 -->
+        <div class="tab-content" id="workout-tab">
+            <h2>今日训练记录</h2>
+            
+            <div class="form-group">
+                <label>训练日选择：</label>
+                <select id="workout-day">
+                    <option value="day1">训练日1：上肢力量+跳跃</option>
+                    <option value="day2">训练日2：下肢+核心</option>
+                    <option value="day3">训练日3：全身+拉伸</option>
+                    <option value="day4">训练日4：有氧+柔韧</option>
+                    <option value="rest">休息日</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>训练项目：</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="exercise-pullup"> 引体向上
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="exercise-pushup"> 俯卧撑
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="exercise-squat"> 深蹲
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="exercise-plank"> 平板支撑
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="exercise-jump"> 跳跃训练
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="exercise-stretch"> 拉伸运动
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>训练时长(分钟)：</label>
+                <input type="number" id="workout-duration" min="0" max="180" value="60">
+            </div>
+            
+            <div class="form-group">
+                <label>训练感受：</label>
+                <select id="workout-feeling">
+                    <option value="excellent">非常棒</option>
+                    <option value="good">良好</option>
+                    <option value="normal">一般</option>
+                    <option value="tired">有点累</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>额外备注：</label>
+                <textarea id="workout-notes" rows="3" placeholder="记录特殊训练或感受..."></textarea>
+            </div>
+            
+            <button class="btn" onclick="requestPassword()">提交今日训练记录</button>
+        </div>
+        
+        <!-- 睡眠管理标签 -->
+        <div class="tab-content" id="sleep-tab">
+            <h2>睡眠记录</h2>
+            
+            <div class="form-group">
+                <label>昨晚睡觉时间：</label>
+                <input type="time" id="sleep-time" value="22:30">
+            </div>
+            
+            <div class="form-group">
+                <label>今早起床时间：</label>
+                <input type="time" id="wakeup-time" value="06:30">
+            </div>
+            
+            <div class="form-group">
+                <label>睡眠质量：</label>
+                <select id="sleep-quality">
+                    <option value="excellent">非常好(深度睡眠)</option>
+                    <option value="good">良好</option>
+                    <option value="normal">一般</option>
+                    <option value="poor">较差(多梦易醒)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>午休时长(分钟)：</label>
+                <input type="number" id="nap-duration" min="0" max="120" value="0">
+            </div>
+            
+            <button class="btn" onclick="requestPassword()">提交睡眠记录</button>
+        </div>
+        
+        <!-- 打卡记录标签 -->
+        <div class="tab-content" id="records-tab">
+            <h2>历史打卡记录</h2>
+            <div class="records" id="records-container">
+                <!-- 记录会动态加载到这里 -->
+            </div>
+            
+            <div class="form-group">
+                <button class="btn" onclick="exportData()">📥 导出所有数据</button>
+                <button class="btn" onclick="clearAllData()" style="background: #dc3545; margin-top: 10px;">⚠️ 清空所有数据</button>
             </div>
         </div>
     </div>
+    
+    <!-- 密码弹窗 -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h3>🔒 操作员验证</h3>
+            <p>请输入密码以确认提交</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="输入密码">
+            <div style="margin-top: 20px;">
+                <button class="password-btn" onclick="checkPassword()">确认提交</button>
+                <button class="password-btn" onclick="closePasswordModal()" style="background: #6c757d; margin-left: 10px;">取消</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 提示信息 -->
+    <div class="alert alert-success" id="successAlert">打卡成功！记录已保存。</div>
+    <div class="alert alert-error" id="errorAlert">密码错误！请重新输入。</div>
 
     <script>
-        // 全局变量
-        let records = [];
-        let chart = null;
+        // 密码配置
+        const CORRECT_PASSWORD = "123456ex";
+        let currentAction = null;
         
-        // 页面加载时初始化
+        // 初始化数据
+        let records = JSON.parse(localStorage.getItem('fitnessRecords') || '[]');
+        
+        // DOM加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
-            // 设置今日日期
-            const today = new Date();
-            document.getElementById('today-date').textContent = 
-                today.getFullYear() + '年' + 
-                (today.getMonth() + 1) + '月' + 
-                today.getDate() + '日';
-            
-            // 加载保存的记录
-            loadRecords();
-            
-            // 检查今天是否已打卡
-            checkTodayRecord();
-            
-            // 显示统计
             updateStats();
+            loadRecords();
+            updateCurrentWeek();
         });
         
-        // 显示不同部分
-        function showSection(sectionId) {
-            // 移除所有标签的active类
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
+        // 切换标签页
+        function switchTab(tabName) {
+            // 移除所有active类
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             
-            // 隐藏所有内容
-            document.querySelectorAll('.section-content').forEach(content => {
-                content.classList.remove('active');
-            });
+            // 添加active类到对应标签
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
             
-            // 激活当前标签
-            event.target.classList.add('active');
-            
-            // 显示对应内容
-            document.getElementById(sectionId + '-section').classList.add('active');
-            
-            // 如果是统计部分，更新图表
-            if (sectionId === 'stats') {
-                updateChart();
+            // 如果是记录标签，重新加载记录
+            if(tabName === 'records') {
+                loadRecords();
             }
         }
         
-        // 计数器功能
-        function changeValue(type, delta) {
-            const display = document.getElementById(type + '-count');
-            const input = document.getElementById(type);
-            let value = parseInt(display.textContent) + delta;
-            value = Math.max(0, value);
-            display.textContent = value;
-            input.value = value;
+        // 请求密码验证
+        function requestPassword() {
+            // 确定当前在哪个标签页
+            const activeTab = document.querySelector('.tab.active');
+            if(activeTab.textContent.includes('饮食')) currentAction = 'diet';
+            else if(activeTab.textContent.includes('运动')) currentAction = 'workout';
+            else if(activeTab.textContent.includes('睡眠')) currentAction = 'sleep';
+            
+            document.getElementById('passwordModal').style.display = 'flex';
+            document.getElementById('passwordInput').focus();
         }
         
-        // 保存记录
-        function saveRecord() {
+        // 关闭密码弹窗
+        function closePasswordModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+            currentAction = null;
+        }
+        
+        // 检查密码
+        function checkPassword() {
+            const inputPassword = document.getElementById('passwordInput').value;
+            
+            if(inputPassword === CORRECT_PASSWORD) {
+                closePasswordModal();
+                
+                // 根据当前动作执行相应提交
+                if(currentAction === 'diet') submitDiet();
+                else if(currentAction === 'workout') submitWorkout();
+                else if(currentAction === 'sleep') submitSleep();
+                
+                showAlert('success');
+            } else {
+                showAlert('error');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+            }
+        }
+        
+        // 提交饮食记录
+        function submitDiet() {
             const today = new Date().toISOString().split('T')[0];
             
-            // 收集数据
-            const record = {
+            // 检查今天是否已有饮食记录
+            const existingIndex = records.findIndex(r => r.date === today && r.type === 'diet');
+            
+            const dietRecord = {
+                id: Date.now(),
                 date: today,
-                timestamp: new Date().getTime(),
-                exercise: {
-                    pullups: parseInt(document.getElementById('pullups').value),
-                    pushups: parseInt(document.getElementById('pushups').value),
-                    squats: parseInt(document.getElementById('squats').value),
-                    jumps: parseInt(document.getElementById('jumps').value),
-                    exerciseTime: parseInt(document.getElementById('exerciseTime').value),
-                    exerciseNotes: document.getElementById('exerciseNotes').value
+                type: 'diet',
+                breakfast: document.getElementById('breakfast-main').value,
+                breakfastProtein: parseInt(document.getElementById('breakfast-protein').value) || 0,
+                lunch: document.getElementById('lunch-main').value,
+                lunchProtein: parseInt(document.getElementById('lunch-protein').value) || 0,
+                dinner: document.getElementById('dinner-main').value,
+                dinnerProtein: parseInt(document.getElementById('dinner-protein').value) || 0,
+                supplements: {
+                    protein: document.getElementById('snack-protein').checked,
+                    fruit: document.getElementById('snack-fruit').checked,
+                    nuts: document.getElementById('snack-nuts').checked,
+                    milk: document.getElementById('snack-milk').checked,
+                    other: document.getElementById('snack-other').checked
                 },
-                nutrition: {
-                    breakfast: document.getElementById('breakfast').value,
-                    lunch: document.getElementById('lunch').value,
-                    dinner: document.getElementById('dinner').value,
-                    snacks: document.getElementById('snacks').value,
-                    water: parseInt(document.getElementById('water').value)
-                },
-                sleep: {
-                    sleepTime: document.getElementById('sleepTime').value,
-                    wakeTime: document.getElementById('wakeTime').value,
-                    sleepQuality: document.getElementById('sleepQuality').value
-                },
-                body: {
-                    height: parseFloat(document.getElementById('height').value) || 0,
-                    weight: parseFloat(document.getElementById('weight').value) || 0
-                }
+                water: parseFloat(document.getElementById('water-intake').value) || 0,
+                timestamp: new Date().toLocaleString()
             };
             
-            // 检查今天是否已有记录
-            const existingIndex = records.findIndex(r => r.date === today);
-            if (existingIndex >= 0) {
-                if (confirm('今天已有记录，是否更新？')) {
-                    records[existingIndex] = record;
-                } else {
-                    return;
-                }
+            if(existingIndex > -1) {
+                records[existingIndex] = dietRecord;
             } else {
-                records.push(record);
+                records.push(dietRecord);
             }
             
-            // 按日期排序
-            records.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            // 保存到localStorage
-            localStorage.setItem('fitnessRecords', JSON.stringify(records));
-            
-            // 更新显示
-            loadRecords();
+            saveToStorage();
             updateStats();
-            updateChart();
             
-            alert('记录保存成功！');
+            // 清空表单
+            document.getElementById('breakfast-main').value = '';
+            document.getElementById('breakfast-protein').value = '';
+            document.getElementById('lunch-main').value = '';
+            document.getElementById('lunch-protein').value = '';
+            document.getElementById('dinner-main').value = '';
+            document.getElementById('dinner-protein').value = '';
+            document.querySelectorAll('#diet-tab input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('water-intake').value = '2';
+        }
+        
+        // 提交运动记录
+        function submitWorkout() {
+            const today = new Date().toISOString().split('T')[0];
             
-            // 跳转到记录页面
-            showSection('records');
+            const existingIndex = records.findIndex(r => r.date === today && r.type === 'workout');
+            
+            const workoutRecord = {
+                id: Date.now(),
+                date: today,
+                type: 'workout',
+                day: document.getElementById('workout-day').value,
+                exercises: {
+                    pullup: document.getElementById('exercise-pullup').checked,
+                    pushup: document.getElementById('exercise-pushup').checked,
+                    squat: document.getElementById('exercise-squat').checked,
+                    plank: document.getElementById('exercise-plank').checked,
+                    jump: document.getElementById('exercise-jump').checked,
+                    stretch: document.getElementById('exercise-stretch').checked
+                },
+                duration: parseInt(document.getElementById('workout-duration').value) || 0,
+                feeling: document.getElementById('workout-feeling').value,
+                notes: document.getElementById('workout-notes').value,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            if(existingIndex > -1) {
+                records[existingIndex] = workoutRecord;
+            } else {
+                records.push(workoutRecord);
+            }
+            
+            saveToStorage();
+            updateStats();
+            
+            // 重置表单
+            document.querySelectorAll('#workout-tab input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('workout-duration').value = '60';
+            document.getElementById('workout-notes').value = '';
+        }
+        
+        // 提交睡眠记录
+        function submitSleep() {
+            const today = new Date().toISOString().split('T')[0];
+            
+            const existingIndex = records.findIndex(r => r.date === today && r.type === 'sleep');
+            
+            const sleepRecord = {
+                id: Date.now(),
+                date: today,
+                type: 'sleep',
+                sleepTime: document.getElementById('sleep-time').value,
+                wakeupTime: document.getElementById('wakeup-time').value,
+                quality: document.getElementById('sleep-quality').value,
+                napDuration: parseInt(document.getElementById('nap-duration').value) || 0,
+                timestamp: new Date().toLocaleString()
+            };
+            
+            if(existingIndex > -1) {
+                records[existingIndex] = sleepRecord;
+            } else {
+                records.push(sleepRecord);
+            }
+            
+            saveToStorage();
+            updateStats();
+        }
+        
+        // 保存到本地存储
+        function saveToStorage() {
+            localStorage.setItem('fitnessRecords', JSON.stringify(records));
+        }
+        
+        // 更新统计数据
+        function updateStats() {
+            const dietRecords = records.filter(r => r.type === 'diet');
+            const workoutRecords = records.filter(r => r.type === 'workout' && r.day !== 'rest');
+            const sleepRecords = records.filter(r => r.type === 'sleep');
+            
+            // 计算总天数（去重）
+            const uniqueDates = [...new Set(records.map(r => r.date))];
+            document.getElementById('totalDays').textContent = uniqueDates.length;
+            
+            // 训练次数
+            document.getElementById('totalWorkouts').textContent = workoutRecords.length;
+            
+            // 平均睡眠时间
+            if(sleepRecords.length > 0) {
+                let totalSleepHours = 0;
+                sleepRecords.forEach(record => {
+                    const sleep = parseTime(record.sleepTime);
+                    const wakeup = parseTime(record.wakeupTime);
+                    let hours = wakeup - sleep;
+                    if(hours < 0) hours += 24; // 处理跨夜
+                    totalSleepHours += hours;
+                });
+                const avgSleep = (totalSleepHours / sleepRecords.length).toFixed(1);
+                document.getElementById('avgSleep').textContent = avgSleep + 'h';
+            }
+        }
+        
+        // 解析时间字符串为小时数
+        function parseTime(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours + minutes / 60;
         }
         
         // 加载记录
         function loadRecords() {
-            const saved = localStorage.getItem('fitnessRecords');
-            if (saved) {
-                records = JSON.parse(saved);
-                displayRecords();
-            }
-        }
-        
-        // 显示记录列表
-        function displayRecords() {
-            const container = document.getElementById('records-list');
+            const container = document.getElementById('records-container');
             container.innerHTML = '';
             
-            if (records.length === 0) {
-                container.innerHTML = '<p>暂无打卡记录，开始你的第一天吧！</p>';
+            if(records.length === 0) {
+                container.innerHTML = '<div class="record-card"><p>暂无打卡记录，请开始你的第一天打卡！</p></div>';
                 return;
             }
             
+            // 按日期分组
+            const recordsByDate = {};
             records.forEach(record => {
-                const recordDiv = document.createElement('div');
-                recordDiv.className = 'record-item';
-                
-                // 计算睡眠时长
-                const sleepTime = record.sleep.sleepTime.split(':');
-                const wakeTime = record.sleep.wakeTime.split(':');
-                const sleepHour = parseInt(sleepTime[0]);
-                const sleepMinute = parseInt(sleepTime[1]);
-                const wakeHour = parseInt(wakeTime[0]);
-                const wakeMinute = parseInt(wakeTime[1]);
-                
-                let sleepDuration = wakeHour - sleepHour;
-                if (wakeHour < sleepHour) {
-                    sleepDuration += 24;
+                if(!recordsByDate[record.date]) {
+                    recordsByDate[record.date] = [];
                 }
-                sleepDuration += (wakeMinute - sleepMinute) / 60;
+                recordsByDate[record.date].push(record);
+            });
+            
+            // 按日期倒序排列
+            const sortedDates = Object.keys(recordsByDate).sort().reverse();
+            
+            sortedDates.forEach(date => {
+                const dateRecords = recordsByDate[date];
+                const card = document.createElement('div');
+                card.className = 'record-card';
                 
-                recordDiv.innerHTML = `
+                let content = `
                     <div class="record-header">
-                        <span class="record-date">${formatDate(record.date)}</span>
-                        <span>💤 ${sleepDuration.toFixed(1)}小时</span>
+                        <div class="record-date">${formatDate(date)}</div>
+                        <div class="record-time">第${getWeekNumber(date)}周</div>
                     </div>
                     <div class="record-content">
-                        <p><strong>运动:</strong> 引体向上${record.exercise.pullups}个，俯卧撑${record.exercise.pushups}个，深蹲${record.exercise.squats}个，运动${record.exercise.exerciseTime}分钟</p>
-                        <p><strong>营养:</strong> 饮水${record.nutrition.water}ml</p>
-                        <p><strong>身体数据:</strong> ${record.body.height > 0 ? '身高' + record.body.height + 'cm' : ''} ${record.body.weight > 0 ? '体重' + record.body.weight + 'kg' : ''}</p>
-                        <p><strong>备注:</strong> ${record.exercise.exerciseNotes || '无'}</p>
-                    </div>
                 `;
                 
-                container.appendChild(recordDiv);
+                dateRecords.forEach(record => {
+                    if(record.type === 'diet') {
+                        content += `
+                            <div class="record-section">
+                                <h4>🍽️ 饮食记录</h4>
+                                <p><strong>早餐：</strong>${record.breakfast || '未记录'} (${record.breakfastProtein || 0}g蛋白)</p>
+                                <p><strong>午餐：</strong>${record.lunch || '未记录'} (${record.lunchProtein || 0}g蛋白)</p>
+                                <p><strong>晚餐：</strong>${record.dinner || '未记录'} (${record.dinnerProtein || 0}g蛋白)</p>
+                                <p><strong>饮水量：</strong>${record.water || 0}L</p>
+                            </div>
+                        `;
+                    } else if(record.type === 'workout') {
+                        const exercises = Object.entries(record.exercises)
+                            .filter(([_, value]) => value)
+                            .map(([key]) => getExerciseName(key))
+                            .join('、') || '无';
+                        
+                        content += `
+                            <div class="record-section">
+                                <h4>💪 训练记录</h4>
+                                <p><strong>训练日：</strong>${getWorkoutDayName(record.day)}</p>
+                                <p><strong>训练项目：</strong>${exercises}</p>
+                                <p><strong>时长：</strong>${record.duration || 0}分钟</p>
+                                <p><strong>感受：</strong>${getFeelingText(record.feeling)}</p>
+                            </div>
+                        `;
+                    } else if(record.type === 'sleep') {
+                        content += `
+                            <div class="record-section">
+                                <h4>😴 睡眠记录</h4>
+                                <p><strong>睡眠时间：</strong>${record.sleepTime} - ${record.wakeupTime}</p>
+                                <p><strong>睡眠质量：</strong>${getSleepQualityText(record.quality)}</p>
+                                <p><strong>午休：</strong>${record.napDuration || 0}分钟</p>
+                            </div>
+                        `;
+                    }
+                });
+                
+                content += '</div>';
+                card.innerHTML = content;
+                container.appendChild(card);
             });
         }
         
-        // 格式化日期
+        // 辅助函数
         function formatDate(dateStr) {
             const date = new Date(dateStr);
-            return date.getFullYear() + '年' + 
-                   (date.getMonth() + 1) + '月' + 
-                   date.getDate() + '日';
+            return `${date.getMonth() + 1}月${date.getDate()}日`;
         }
         
-        // 检查今天是否已打卡
-        function checkTodayRecord() {
+        function getWeekNumber(dateStr) {
+            const startDate = new Date('2024-01-22'); // 假设寒假开始日期
+            const currentDate = new Date(dateStr);
+            const diffTime = Math.abs(currentDate - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return Math.ceil(diffDays / 7);
+        }
+        
+        function getExerciseName(key) {
+            const names = {
+                pullup: '引体向上',
+                pushup: '俯卧撑',
+                squat: '深蹲',
+                plank: '平板支撑',
+                jump: '跳跃训练',
+                stretch: '拉伸运动'
+            };
+            return names[key] || key;
+        }
+        
+        function getWorkoutDayName(day) {
+            const names = {
+                day1: '训练日1：上肢力量+跳跃',
+                day2: '训练日2：下肢+核心',
+                day3: '训练日3：全身+拉伸',
+                day4: '训练日4：有氧+柔韧',
+                rest: '休息日'
+            };
+            return names[day] || day;
+        }
+        
+        function getFeelingText(feeling) {
+            const texts = {
+                excellent: '非常棒',
+                good: '良好',
+                normal: '一般',
+                tired: '有点累'
+            };
+            return texts[feeling] || feeling;
+        }
+        
+        function getSleepQualityText(quality) {
+            const texts = {
+                excellent: '非常好',
+                good: '良好',
+                normal: '一般',
+                poor: '较差'
+            };
+            return texts[quality] || quality;
+        }
+        
+        function updateCurrentWeek() {
             const today = new Date().toISOString().split('T')[0];
-            const todayRecord = records.find(r => r.date === today);
-            
-            if (todayRecord) {
-                // 填充表单
-                document.getElementById('pullups').value = todayRecord.exercise.pullups;
-                document.getElementById('pullups-count').textContent = todayRecord.exercise.pullups;
-                document.getElementById('pushups').value = todayRecord.exercise.pushups;
-                document.getElementById('pushups-count').textContent = todayRecord.exercise.pushups;
-                document.getElementById('squats').value = todayRecord.exercise.squats;
-                document.getElementById('squats-count').textContent = todayRecord.exercise.squats;
-                document.getElementById('jumps').value = todayRecord.exercise.jumps;
-                document.getElementById('exerciseTime').value = todayRecord.exercise.exerciseTime;
-                document.getElementById('exerciseNotes').value = todayRecord.exercise.exerciseNotes;
-                document.getElementById('breakfast').value = todayRecord.nutrition.breakfast;
-                document.getElementById('lunch').value = todayRecord.nutrition.lunch;
-                document.getElementById('dinner').value = todayRecord.nutrition.dinner;
-                document.getElementById('snacks').value = todayRecord.nutrition.snacks;
-                document.getElementById('water').value = todayRecord.nutrition.water;
-                document.getElementById('sleepTime').value = todayRecord.sleep.sleepTime;
-                document.getElementById('wakeTime').value = todayRecord.sleep.wakeTime;
-                document.getElementById('sleepQuality').value = todayRecord.sleep.sleepQuality;
-                document.getElementById('height').value = todayRecord.body.height;
-                document.getElementById('weight').value = todayRecord.body.weight;
-            }
-        }
-        
-        // 清除表单
-        function clearForm() {
-            if (confirm('确定要重置表单吗？')) {
-                document.getElementById('pullups').value = 0;
-                document.getElementById('pullups-count').textContent = 0;
-                document.getElementById('pushups').value = 0;
-                document.getElementById('pushups-count').textContent = 0;
-                document.getElementById('squats').value = 0;
-                document.getElementById('squats-count').textContent = 0;
-                document.getElementById('jumps').value = 0;
-                document.getElementById('exerciseTime').value = 0;
-                document.getElementById('exerciseNotes').value = '';
-                document.getElementById('breakfast').value = '';
-                document.getElementById('lunch').value = '';
-                document.getElementById('dinner').value = '';
-                document.getElementById('snacks').value = '';
-                document.getElementById('water').value = 0;
-                document.getElementById('sleepTime').value = '22:30';
-                document.getElementById('wakeTime').value = '07:00';
-                document.getElementById('sleepQuality').value = '3';
-                document.getElementById('height').value = '';
-                document.getElementById('weight').value = '';
-            }
-        }
-        
-        // 更新统计
-        function updateStats() {
-            if (records.length === 0) return;
-            
-            document.getElementById('total-days').textContent = records.length;
-            
-            const totalPullups = records.reduce((sum, r) => sum + r.exercise.pullups, 0);
-            const totalPushups = records.reduce((sum, r) => sum + r.exercise.pushups, 0);
-            const totalSquats = records.reduce((sum, r) => sum + r.exercise.squats, 0);
-            
-            document.getElementById('total-pullups').textContent = totalPullups;
-            document.getElementById('total-pushups').textContent = totalPushups;
-            document.getElementById('total-squats').textContent = totalSquats;
-            
-            // 平均睡眠时长
-            let totalSleep = 0;
-            records.forEach(record => {
-                const sleepTime = record.sleep.sleepTime.split(':');
-                const wakeTime = record.sleep.wakeTime.split(':');
-                const sleepHour = parseInt(sleepTime[0]);
-                const sleepMinute = parseInt(sleepTime[1]);
-                const wakeHour = parseInt(wakeTime[0]);
-                const wakeMinute = parseInt(wakeTime[1]);
-                
-                let sleepDuration = wakeHour - sleepHour;
-                if (wakeHour < sleepHour) {
-                    sleepDuration += 24;
-                }
-                sleepDuration += (wakeMinute - sleepMinute) / 60;
-                
-                totalSleep += sleepDuration;
-            });
-            
-            document.getElementById('avg-sleep').textContent = (totalSleep / records.length).toFixed(1);
-            
-            // 平均饮水量
-            const avgWater = records.reduce((sum, r) => sum + r.nutrition.water, 0) / records.length;
-            document.getElementById('avg-water').textContent = Math.round(avgWater);
-        }
-        
-        // 更新图表
-        function updateChart() {
-            const ctx = document.getElementById('trend-chart').getContext('2d');
-            
-            // 获取最近7天数据
-            const recentRecords = [...records].sort((a, b) => new Date(a.date) - new Date(b.date)).slice(-7);
-            
-            const dates = recentRecords.map(r => r.date.substring(5)); // 显示月-日
-            const pullupsData = recentRecords.map(r => r.exercise.pullups);
-            const pushupsData = recentRecords.map(r => r.exercise.pushups);
-            const squatsData = recentRecords.map(r => r.exercise.squats);
-            
-            if (chart) {
-                chart.destroy();
-            }
-            
-            chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [
-                        {
-                            label: '引体向上',
-                            data: pullupsData,
-                            borderColor: '#667eea',
-                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                            tension: 0.3
-                        },
-                        {
-                            label: '俯卧撑',
-                            data: pushupsData,
-                            borderColor: '#764ba2',
-                            backgroundColor: 'rgba(118, 75, 162, 0.1)',
-                            tension: 0.3
-                        },
-                        {
-                            label: '深蹲',
-                            data: squatsData,
-                            borderColor: '#4caf50',
-                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                            tension: 0.3
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: '数量（个）'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: '日期'
-                            }
-                        }
-                    }
-                }
-            });
+            document.getElementById('currentWeek').textContent = getWeekNumber(today);
         }
         
         // 导出数据
         function exportData() {
             const dataStr = JSON.stringify(records, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `fitness-records-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
             
-            const exportFileDefaultName = `健身打卡记录_${new Date().toISOString().split('T')[0]}.json`;
-            
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
+            alert('数据已导出为JSON文件！');
         }
         
-        // 导入数据
-        function importData() {
-            document.getElementById('import-file').click();
-        }
-        
-        // 处理文件导入
-        document.getElementById('import-file').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const importedRecords = JSON.parse(e.target.result);
-                    if (Array.isArray(importedRecords)) {
-                        if (confirm(`确认导入${importedRecords.length}条记录吗？这将覆盖现有数据。`)) {
-                            records = importedRecords;
-                            localStorage.setItem('fitnessRecords', JSON.stringify(records));
-                            loadRecords();
-                            updateStats();
-                            updateChart();
-                            alert('数据导入成功！');
-                        }
-                    } else {
-                        alert('文件格式不正确');
-                    }
-                } catch (error) {
-                    alert('读取文件失败：' + error.message);
+        // 清空所有数据（需要密码确认）
+        function clearAllData() {
+            if(confirm('⚠️ 确定要清空所有数据吗？此操作不可恢复！')) {
+                const password = prompt('请输入操作员密码以确认清空：');
+                if(password === CORRECT_PASSWORD) {
+                    localStorage.removeItem('fitnessRecords');
+                    records = [];
+                    updateStats();
+                    loadRecords();
+                    alert('所有数据已清空！');
+                } else {
+                    alert('密码错误，操作取消！');
                 }
-            };
-            reader.readAsText(file);
-            
-            // 清除文件输入
-            event.target.value = '';
+            }
+        }
+        
+        // 显示提示信息
+        function showAlert(type) {
+            const alert = document.getElementById(type === 'success' ? 'successAlert' : 'errorAlert');
+            alert.style.display = 'block';
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+        
+        // 防止右键查看源代码
+        document.addEventListener('contextmenu', function(e) {
+            if(e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+            }
+        });
+        
+        // 防止F12键
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'F12') {
+                e.preventDefault();
+                alert('操作员您好！源代码已加密保护。如需维护请联系管理员。');
+            }
         });
     </script>
 </body>
